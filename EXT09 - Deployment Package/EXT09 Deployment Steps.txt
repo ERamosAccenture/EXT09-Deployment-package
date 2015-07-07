@@ -1,0 +1,24 @@
+Deployment steps. 
+
+
+1.Open Unix. 
+2.Move the XXNBTY_MSC_EXT09_PURGE_PLAN_PKG.pks and XXNBTY_MSC_EXT09_PURGE_PLAN_PKG.pkb to /u01/oracle/apps/apps_st/appl/xxnbty/12.0.0/admin/sql using WINSCP and execute the command below in the UNIX.
+
+
+sqlplus -s USERNAME/PASSWORD
+
+@/u01/oracle/apps/apps_st/appl/xxnbty/12.0.0/admin/sql/XXNBTY_MSC_EXT09_PURGE_PLAN_PKG.pks
+
+@/u01/oracle/apps/apps_st/appl/xxnbty/12.0.0/admin/sql/XXNBTY_MSC_EXT09_PURGE_PLAN_PKG.pkb
+
+
+3.Move the XXNBTY_EXT09_LT.ldt and XXNBTY_EXT09_CP.ldt  to /u01/oracle/apps/apps_st/appl/xxnbty/12.0.0/admin/import using WINSCP and execute the command below in the UNIX.
+NOTE: Please make sure to update the password.
+
+cd /u01/oracle/apps/apps_st/appl/xxnbty/12.0.0/admin/import
+
+
+FNDLOAD apps/PASSWORD 0 Y UPLOAD $FND_TOP/patch/115/import/aflvmlu.lct XXNBTY_EXT09_LT.ldt CUSTOM_MODE=FORCE
+
+
+FNDLOAD apps/PASSWORD 0 Y UPLOAD $FND_TOP/patch/115/import/afcpprog.lct XXNBTY_EXT09_CP.ldt CUSTOM_MODE=FORCE
